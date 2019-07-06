@@ -20,16 +20,8 @@ namespace Logistica.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
-            var utilizadores = new List<Utilizadores> {
-                new Utilizadores{ID = 1, Nome = "Andre", Apelido = "Silveira", NomeEmpresa = "Empresa XPTO", Rua = "Rua Teste", NIF = "123456789", Contacto = "123456789", Pais  = "Portugal", Email = "123456789@mail.com", Cidade = "cidade Teste", CodigoPostal = "1234- 123", NumPorta  = "1", Fotografia = "path XPTO"},
-                new Utilizadores{ID = 2, Nome = "Antonio", Apelido = " Rocha", NomeEmpresa = "Empresa XPTO", Rua = "Rua Teste", NIF = "123456789", Contacto = "123456789", Pais  = "Portugal", Email = "123456789@mail.com", Cidade = "cidade Teste", CodigoPostal = "1234- 123", NumPorta  = "1", Fotografia = "path XPTO"},
-                new Utilizadores{ID = 3, Nome = "Augusto", Apelido = "Carvalho", NomeEmpresa = "Empresa XPTO", Rua = "Rua Teste", NIF = "123456789", Contacto = "123456789", Pais  = "Portugal", Email = "123456789@mail.com", Cidade = "cidade Teste", CodigoPostal = "1234- 123", NumPorta  = "1", Fotografia = "path XPTO"},
-                new Utilizadores{ID = 4, Nome = "Beatriz", Apelido = "Pinto", NomeEmpresa = "Empresa XPTO", Rua = "Rua Teste", NIF = "123456789", Contacto = "123456789", Pais  = "Portugal", Email = "123456789@mail.com", Cidade = "cidade Teste", CodigoPostal = "1234- 123", NumPorta  = "1", Fotografia = "path XPTO"},
-                new Utilizadores{ID = 5, Nome = "Claudia", Apelido =  "Pinto", NomeEmpresa = "Empresa XPTO", Rua = "Rua Teste", NIF = "123456789", Contacto = "123456789", Pais  = "Portugal", Email = "123456789@mail.com", Cidade = "cidade Teste", CodigoPostal = "1234- 123", NumPorta  = "1", Fotografia = "path XPTO"}
-            };
-
-
-
+            
+            // Qualquer coisa
         }
     }
 }
