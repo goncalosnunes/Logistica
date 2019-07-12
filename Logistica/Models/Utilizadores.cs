@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,13 @@ namespace Logistica.Models
 {
     public class Utilizadores
     {
+
+        public Utilizadores()
+        {
+            // criar o objeto 'ListaDeMultas'
+            ListaDePedidos = new HashSet<Pedido>();
+        }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int ID { get; set; }
 
@@ -63,6 +71,8 @@ namespace Logistica.Models
 
         [Required(ErrorMessage = "Adicione um email")]
         public string Email { get; set; }
+
+        public virtual ICollection<Pedido> ListaDePedidos { get; set; }
 
     }
 }

@@ -8,6 +8,7 @@ namespace Logistica.Models
 {
     public class Pedido
     {
+
         public int ID { get; set; }
 
         [Required(ErrorMessage = "O nome é de preenchimento obrigatório")]
@@ -74,6 +75,5 @@ namespace Logistica.Models
 
         [Required(ErrorMessage = "Adicione uma data de entrega pretendida")]
         public DateTime DataEntregaPretendida { get; set; }
-
     }
 }

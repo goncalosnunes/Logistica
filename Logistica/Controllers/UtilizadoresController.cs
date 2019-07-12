@@ -14,11 +14,35 @@ namespace Logistica.Controllers
     public class UtilizadoresController : Controller
     {
         private LogisticaDB db = new LogisticaDB();
-        [Authorize (Roles = "Gestor")]
+        [Authorize(Roles = "Gestor,Cliente")]
         // GET: Utilizadores
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.Utilizadores.ToListAsync());
+
+            // LINQ
+            // SELECT * FROM Agentes ORDER BY ID DESC   <--- só as pessoas dos recursos humanos
+            var listaDeUtilizadores = db.Utilizadores
+                                   .OrderByDescending(a => a.ID)
+                                   .ToList();
+
+            // se for apenas agente
+            //SELECT * FROM Agente WHERE UserName = username da pessoa autenticada
+            if (!User.IsInRole("Gestor"))
+            {
+                // vou restringir a listagem inicial apenas aos dados do Agente
+                //  listaDeAgentes = listaDeAgentes.Where(a => a.UserName == User.Identity.Name).ToList();
+
+                // redirecionar para página dos detalhes
+                int idUtilizador = db.Utilizadores
+                               .Where(a => a.Email == User.Identity.Name)
+                               .FirstOrDefault()
+                               .ID;
+                return RedirectToAction("Details", new { id = idUtilizador });
+
+
+            }
+
+            return View(listaDeUtilizadores);
         }
 
         // GET: Utilizadores/Details/5
