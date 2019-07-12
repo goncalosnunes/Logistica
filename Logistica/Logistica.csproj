@@ -181,9 +181,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CotacaosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PedidoesController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\TransportadorasController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\UtilizadoresController.cs" />
     <Compile Include="Global.asax.cs">
@@ -293,6 +296,21 @@
     <Content Include="Views\Utilizadores\Details.cshtml" />
     <Content Include="Views\Utilizadores\Edit.cshtml" />
     <Content Include="Views\Utilizadores\Index.cshtml" />
+    <Content Include="Views\Pedidoes\Create.cshtml" />
+    <Content Include="Views\Pedidoes\Delete.cshtml" />
+    <Content Include="Views\Pedidoes\Details.cshtml" />
+    <Content Include="Views\Pedidoes\Edit.cshtml" />
+    <Content Include="Views\Pedidoes\Index.cshtml" />
+    <Content Include="Views\Transportadoras\Create.cshtml" />
+    <Content Include="Views\Transportadoras\Delete.cshtml" />
+    <Content Include="Views\Transportadoras\Details.cshtml" />
+    <Content Include="Views\Transportadoras\Edit.cshtml" />
+    <Content Include="Views\Transportadoras\Index.cshtml" />
+    <Content Include="Views\Cotacaos\Create.cshtml" />
+    <Content Include="Views\Cotacaos\Delete.cshtml" />
+    <Content Include="Views\Cotacaos\Details.cshtml" />
+    <Content Include="Views\Cotacaos\Edit.cshtml" />
+    <Content Include="Views\Cotacaos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

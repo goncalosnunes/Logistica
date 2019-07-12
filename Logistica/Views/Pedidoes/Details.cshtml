@@ -1,0 +1,138 @@
+﻿@model Logistica.Models.Pedido
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pedido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apelido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apelido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeEmpresaDestinataria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeEmpresaDestinataria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaisDestino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaisDestino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CidadeDestino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CidadeDestino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RuaDestino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RuaDestino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoPostalDestino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoPostalDestino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumPortaDestino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumPortaDestino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactoDestinatario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactoDestinatario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailDestinatario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailDestinatario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comprimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comprimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Largura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Largura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Altura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Altura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataEntregaPretendida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataEntregaPretendida)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
