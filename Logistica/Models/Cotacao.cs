@@ -12,7 +12,7 @@ namespace Logistica.Models
         public int ID { get; set; }
 
         [Required(ErrorMessage = "Adicione um valor à cotação")]
-        public decimal valorCotacao { get; set; }
+        public decimal ValorCotacao { get; set; }
 
         [ForeignKey("Pedidofk")]
         public Pedido Pedido { get; set; }

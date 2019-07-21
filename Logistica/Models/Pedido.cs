@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -14,13 +15,13 @@ namespace Logistica.Models
         [StringLength(30)]
         [RegularExpression("[A-ZÁÉÍÓÚ][a-záéíóúàèìòù]", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
             " separadas por um espaço em branco")]
-        public string Nome { get; set; }
+        public string NomeDestinatario { get; set; }
 
         [Required(ErrorMessage = "O apelido é de preenchimento obrigatório")]
         [StringLength(30)]
         [RegularExpression("[A-ZÁÉÍÓÚ][a-záéíóúàèìòù]", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
             " separadas por um espaço em branco")]
-        public string Apelido { get; set; }
+        public string ApelidoDestinatario { get; set; }
 
         [RegularExpression("[A-ZÁÉÍÓÚ][a-záéíóúàèìòù]+( [A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,6}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
             " separadas por um espaço em branco")]
@@ -66,7 +67,7 @@ namespace Logistica.Models
         [Required(ErrorMessage = "Adicione um comprimento")]
         public decimal Comprimento { get; set; }
 
-        [Required(ErrorMessage = "Adicione um largura")]
+        [Required(ErrorMessage = "Adicione uma largura")]
         public decimal Largura { get; set; }
 
         [Required(ErrorMessage = "Adicione uma altura")]
@@ -74,6 +75,11 @@ namespace Logistica.Models
 
         [Required(ErrorMessage = "Adicione uma data de entrega pretendida")]
         public DateTime DataEntregaPretendida { get; set; }
+
+        // FK para a tabela dos Utilizadores
+        [ForeignKey("Utilizadores")]
+        public int UtilizadoresFK { get; set; }
+        public virtual Utilizadores Utilizadores { get; set; }
 
     }
 }

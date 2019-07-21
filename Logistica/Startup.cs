@@ -86,7 +86,7 @@ namespace Logistica
 
             user.UserName = "cliente@mail.pt";
             user.Email = "cliente@mail.pt";
-            //  user.Nome = "Luís Freitas";
+           // user.Nome = "Luís Freitas";
             userPWD = "password";
             chkUser = userManager.Create(user, userPWD);
 

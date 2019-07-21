@@ -16,7 +16,7 @@ namespace Logistica
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
+                defaults: new { controller = "Utilizadores", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

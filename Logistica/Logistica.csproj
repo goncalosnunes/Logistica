@@ -192,21 +192,20 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Cotacao.cs" />
+    <Compile Include="Models\Gestor.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LogisticaDB.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pedido.cs" />
+    <Compile Include="Models\Transportador.cs" />
     <Compile Include="Models\Transportadora.cs" />
     <Compile Include="Models\Utilizadores.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\LogisticaDBConnectionString.mdf" />
-    <Content Include="App_Data\LogisticaDBConnectionString_log.ldf">
-      <DependentUpon>LogisticaDBConnectionString.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -215,20 +214,19 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Imagens\aduboAzul.jpg" />
-    <Content Include="Imagens\cortaRelva.jpg" />
-    <Content Include="Imagens\electroserra.jpg" />
-    <Content Include="Imagens\gerador1.jpg" />
-    <Content Include="Imagens\gerador2.jpg" />
-    <Content Include="Imagens\gerador3.jpg" />
-    <Content Include="Imagens\mangueiraJardim.jpg" />
-    <Content Include="Imagens\motoserra.jpg" />
-    <Content Include="Imagens\racaoCao.jpg" />
-    <Content Include="Imagens\racaoCoelhos.jpg" />
-    <Content Include="Imagens\racaoFrangos.jpg" />
-    <Content Include="Imagens\racaoGato.jpg" />
-    <Content Include="Imagens\racaoPassaro.jpg" />
-    <Content Include="Imagens\rocadora.jpg" />
+    <Content Include="Imagens\436037a2-54ac-4aea-ab7a-f45ad033abd5.jpg" />
+    <Content Include="Imagens\7cace5ed-f53b-40da-99d0-4bbdac21f679.png" />
+    <Content Include="Imagens\AndreSilveira.jpg" />
+    <Content Include="Imagens\AntonioRocha.jpg" />
+    <Content Include="Imagens\AugustoCarvalho.jpg" />
+    <Content Include="Imagens\BeatrizPinto.jpg" />
+    <Content Include="Imagens\ClaudiaPinto.jpg" />
+    <Content Include="Imagens\JoseAlves.jpg" />
+    <Content Include="Imagens\LurdesVieira.jpg" />
+    <Content Include="Imagens\nouser.jpg" />
+    <Content Include="Imagens\PauloVieira.jpg" />
+    <Content Include="Imagens\RuiVieira.jpg" />
+    <Content Include="Imagens\TaniaVieira.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -294,7 +292,9 @@
     <Content Include="Views\Utilizadores\Edit.cshtml" />
     <Content Include="Views\Utilizadores\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
