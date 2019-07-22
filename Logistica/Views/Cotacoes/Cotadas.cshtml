@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Logistica.Models.Cotacoes>
+
+
+@{
+	ViewBag.Title = "Cotadas";
+}
+
+<h2>Cotadas</h2>
+<p>
+	@Html.ActionLink("Encomendas", "Encomendas") | @Html.ActionLink("Por atribuir cotação", "EmEspera") | @Html.ActionLink("Cotadas", "Cotadas")
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Pedido.PaisDestino)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Pedido.CidadeDestino)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Pedido.CodigoPostalDestino)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Pedido.Peso)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Pedido.Altura)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Pedido.Comprimento)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Pedido.Largura)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Pedido.DataEntregaPretendida)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.valorCotacao)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Pedido.PaisDestino)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Pedido.CidadeDestino)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Pedido.CodigoPostalDestino)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Pedido.Peso)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Pedido.Altura)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Pedido.Comprimento)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Pedido.Largura)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Pedido.DataEntregaPretendida)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.valorCotacao)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.ID })
+			</td>
+			<td>
+				@Html.ActionLink("Details", "Details", new { id = item.ID })
+			</td>
+		</tr>
+		
+		
+	}
+</table>
+<p>
+	@Html.ActionLink("Voltar para a listagem", "Index")
+</p>

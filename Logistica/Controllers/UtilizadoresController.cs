@@ -1,19 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Logistica.Models;
+using Microsoft.AspNet.Identity.Owin;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Logistica.Models;
 
 namespace Logistica.Controllers
 {
     public class UtilizadoresController : Controller
     {
         private LogisticaDB db = new LogisticaDB();
+        public UtilizadoresController()
+        {
+        }
+
+        public UtilizadoresController(ApplicationUserManager userManager)
+        {
+            UserManager = userManager;
+        }
+
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
         [Authorize(Roles = "Gestor,Cliente")]
         // GET: Utilizadores
         public ActionResult Index()
@@ -38,10 +59,7 @@ namespace Logistica.Controllers
                                .FirstOrDefault()
                                .ID;
                 return RedirectToAction("Details", new { id = idUtilizador });
-
-
             }
-
             return View(listaDeUtilizadores);
         }
 
@@ -53,11 +71,23 @@ namespace Logistica.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Utilizadores utilizadores = await db.Utilizadores.FindAsync(id);
+
             if (utilizadores == null)
             {
                 return HttpNotFound();
             }
-            return View(utilizadores);
+
+            if (User.IsInRole("Gestor") ||
+            utilizadores.Email == User.Identity.Name)
+            {
+                // envia os dados do AGENTE para a View
+                return View(utilizadores);
+            }
+            else
+            {
+                // estou a tentar aceder a dados não autorizados
+                return RedirectToAction("Index");
+            }
         }
 
         // GET: Utilizadores/Create

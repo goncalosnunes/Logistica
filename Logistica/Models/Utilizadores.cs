@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace Logistica.Models
 {
@@ -13,7 +10,7 @@ namespace Logistica.Models
         public Utilizadores()
         {
             // criar o objeto 'ListaDeMultas'
-            ListaDePedidos = new HashSet<Pedido>();
+            ListaDePedidos = new HashSet<Pedidos>();
         }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
@@ -44,7 +41,7 @@ namespace Logistica.Models
         [StringLength(50)]
         public string Pais { get; set; }
 
-        
+
         [RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
            " separadas por um espaço em branco")]
         [StringLength(50)]
@@ -56,7 +53,7 @@ namespace Logistica.Models
         [StringLength(50)]
         public string Rua { get; set; }
 
- 
+
         [StringLength(8)]
         public string CodigoPostal { get; set; }
 
@@ -72,7 +69,7 @@ namespace Logistica.Models
         [Required(ErrorMessage = "Adicione um email")]
         public string Email { get; set; }
 
-        public virtual ICollection<Pedido> ListaDePedidos { get; set; }
+        public virtual ICollection<Pedidos> ListaDePedidos { get; set; }
 
     }
 }

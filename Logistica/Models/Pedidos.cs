@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Logistica.Models
 {
-    public class Pedido
+    public class Pedidos
     {
+        public Pedidos()
+        {
+            // criar o objeto 'ListaDeMultas'
+            ListaDeCotacoes = new HashSet<Cotacoes>();
+        }
 
         public int ID { get; set; }
 
@@ -75,5 +79,19 @@ namespace Logistica.Models
 
         [Required(ErrorMessage = "Adicione uma data de entrega pretendida")]
         public DateTime DataEntregaPretendida { get; set; }
+
+        [ForeignKey("Utilizadorfk")]
+        public Utilizadores Utilizador { get; set; }
+        public int Utilizadorfk { get; set; }
+        public virtual Transportadora Transportadora { get; set; }
+        public  virtual int Transportadorafk { get; set; }
+
+        public decimal Preco { get; set; }
+
+        public int Estado { get; set; }
+
+        public int Aceite { get; set; }
+
+        public virtual ICollection<Cotacoes> ListaDeCotacoes { get; set; }
     }
 }

@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Logistica.Models
 {
     public class Transportadora
     {
+        public Transportadora()
+        {
+            // criar o objeto 'ListaDeMultas'
+            ListaDeCotacoes = new HashSet<Cotacoes>();
+        }
+
         public int ID { get; set; }
 
         [RegularExpression("[A-ZÁÉÍÓÚ][a-záéíóúàèìòù]+( [A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,6}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
@@ -50,5 +53,8 @@ namespace Logistica.Models
 
         [Required(ErrorMessage = "Adicione um email")]
         public string Email { get; set; }
+
+
+        public virtual ICollection<Cotacoes> ListaDeCotacoes { get; set; }
     }
 }

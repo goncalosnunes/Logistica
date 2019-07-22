@@ -1,0 +1,158 @@
+﻿@model Logistica.Models.Pedidos
+
+@{
+	ViewBag.Title = "Encomendas";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+	<h4>Encomenda</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayName("Nome")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Nome)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Apelido")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Apelido)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Empresa")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.NomeEmpresaDestinataria)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("País")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.PaisDestino)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Cidade")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.CidadeDestino)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Rua")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.RuaDestino)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Código Postal")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.CodigoPostalDestino)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Número da Porta")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.NumPortaDestino)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Contacto")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.ContactoDestinatario)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Email")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.EmailDestinatario)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Peso")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Peso)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Comprimento")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Comprimento)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Largura")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Largura)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Altura")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Altura)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Data de Entrega")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.DataEntregaPretendida)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Transportadora")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Transportadora.NomeTransportadora)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Preço")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Preco)
+		</dd>
+		<dt>
+			@Html.DisplayName("Estado")
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Estado)
+		</dd>
+	</dl>
+</div>
+<p>
+	@Html.ActionLink("Voltar para a listagem", "EmTransito")
+</p>

@@ -1,0 +1,122 @@
+﻿@model Logistica.Models.Cotacoes
+
+
+@{
+	ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+<div>
+	<h4>Detalhes</h4>
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Pedido.Nome)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Pedido.Nome)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Pedido.Apelido)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Pedido.Apelido)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Pedido.PaisDestino)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Pedido.PaisDestino)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Pedido.CidadeDestino)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Pedido.CidadeDestino)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Pedido.RuaDestino)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Pedido.RuaDestino)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Pedido.NumPortaDestino)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Pedido.NumPortaDestino)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Pedido.CodigoPostalDestino)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Pedido.CodigoPostalDestino)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Pedido.Peso)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Pedido.Peso)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Pedido.Altura)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Pedido.Altura)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Pedido.Comprimento)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Pedido.Comprimento)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Pedido.Largura)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Pedido.Largura)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Pedido.DataEntregaPretendida)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Pedido.DataEntregaPretendida)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.valorCotacao)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.valorCotacao)
+		</dd>
+	</dl>
+</div>
+
+	<p>
+		@Html.ActionLink("Editar", "Edit", new { id = Model.ID }) |
+		@Html.ActionLink("Voltar para listagem", "Index")
+	</p>
+

@@ -3,7 +3,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -169,7 +168,7 @@ namespace Logistica.Controllers
                         var userStore = new UserStore<ApplicationUser>(context);
                         var userManager = new UserManager<ApplicationUser>(userStore);
                         userManager.AddToRole(user.Id, "Cliente");
-                        var utilizador = new Utilizadores {Nome = model.Nome, Apelido = model.Apelido, Pais = model.Pais, Email = model.Email, NIF = model.NIF, Contacto = model.Contacto, CodigoPostal = model.CodigoPostal, NumPorta = model.NumPorta, Cidade = model.Cidade, NomeEmpresa = model.NomeEmpresa, Rua = model.Rua };
+                        var utilizador = new Utilizadores { Nome = model.Nome, Apelido = model.Apelido, Pais = model.Pais, Email = model.Email, NIF = model.NIF, Contacto = model.Contacto, CodigoPostal = model.CodigoPostal, NumPorta = model.NumPorta, Cidade = model.Cidade, NomeEmpresa = model.NomeEmpresa, Rua = model.Rua };
                         LogisticaDB db = new LogisticaDB();
                         db.Utilizadores.Add(utilizador);
                         await db.SaveChangesAsync();

@@ -1,23 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Logistica.Models;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Logistica.Models;
 
 namespace Logistica.Controllers
 {
     public class TransportadorasController : Controller
     {
         private LogisticaDB db = new LogisticaDB();
-
         // GET: Transportadoras
+        [Authorize(Roles = "Gestor,Transportador")]
         public ActionResult Index()
         {
-            return View(db.Transportadora.ToList());
+            var listaDeTransportadores = db.Transportadora
+                                   .OrderByDescending(a => a.ID)
+                                   .ToList();
+            // se for apenas agente
+            //SELECT * FROM Agente WHERE UserName = username da pessoa autenticada
+            if (!User.IsInRole("Gestor"))
+            {
+                // vou restringir a listagem inicial apenas aos dados do Agente
+                //  listaDeAgentes = listaDeAgentes.Where(a => a.UserName == User.Identity.Name).ToList();
+
+                // redirecionar para página dos detalhes
+                int idTransportador = db.Transportadora
+                               .Where(a => a.Email == User.Identity.Name)
+                               .FirstOrDefault()
+                               .ID;
+                return RedirectToAction("Details", new { id = idTransportador });
+            }
+            return View(listaDeTransportadores);
         }
 
         // GET: Transportadoras/Details/5
@@ -44,10 +58,12 @@ namespace Logistica.Controllers
         // POST: Transportadoras/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Gestor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,NomeTransportadora,Pais,Cidade,Rua,CodigoPostal,NumPorta,NIF,Contacto,Email")] Transportadora transportadora)
         {
+
             if (ModelState.IsValid)
             {
                 db.Transportadora.Add(transportadora);
