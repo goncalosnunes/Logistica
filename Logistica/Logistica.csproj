@@ -218,20 +218,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Imagens\aduboAzul.jpg" />
-    <Content Include="Imagens\cortaRelva.jpg" />
-    <Content Include="Imagens\electroserra.jpg" />
-    <Content Include="Imagens\gerador1.jpg" />
-    <Content Include="Imagens\gerador2.jpg" />
-    <Content Include="Imagens\gerador3.jpg" />
-    <Content Include="Imagens\mangueiraJardim.jpg" />
-    <Content Include="Imagens\motoserra.jpg" />
-    <Content Include="Imagens\racaoCao.jpg" />
-    <Content Include="Imagens\racaoCoelhos.jpg" />
-    <Content Include="Imagens\racaoFrangos.jpg" />
-    <Content Include="Imagens\racaoGato.jpg" />
-    <Content Include="Imagens\racaoPassaro.jpg" />
-    <Content Include="Imagens\rocadora.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -304,7 +290,9 @@
     <Content Include="Views\Pedidos\Encomendas.cshtml" />
     <Content Include="Views\Cotacoes\Encomendas.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Imagens\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
