@@ -177,14 +177,16 @@ namespace Logistica.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Encomenda([Bind(Include = "ID,Nome,Apelido,NomeEmpresaDestinataria,PaisDestino,CidadeDestino,RuaDestino,CodigoPostalDestino,NumPortaDestino,ContactoDestinatario,EmailDestinatario,Peso,Comprimento,Largura,Altura,DataEntregaPretendida,Estado")] Pedidos pedido)
+        public ActionResult Encomenda([Bind(Include = "ID,Nome,Apelido,NomeEmpresaDestinataria,PaisDestino,CidadeDestino,RuaDestino,CodigoPostalDestino,NumPortaDestino,ContactoDestinatario,EmailDestinatario,Peso,Comprimento,Largura,Altura,DataEntregaPretendida,Estado,Utilizador,Utilizadorfk")] Pedidos pedido)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(pedido).State = EntityState.Modified;
+            var pedidoAux = db.Pedidos
+                            .Where(a => a.ID == pedido.ID)
+                            .OrderByDescending(a => a.ID)
+                            .First();
+            pedidoAux.Estado = pedido.Estado;
+            db.Entry(pedidoAux).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Encomendas");
-            }
             return View(pedido);
         }
 

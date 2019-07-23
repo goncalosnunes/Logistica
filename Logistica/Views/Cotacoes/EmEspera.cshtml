@@ -13,6 +13,9 @@
 <table class="table">
 	<tr>
 		<th nowrap="">
+			@Html.DisplayName("Nº de Pedido")
+		</th>
+		<th nowrap="">
 			@Html.DisplayName("País")
 		</th>
 		<th nowrap="">
@@ -45,6 +48,9 @@
 	@foreach (var item in Model)
 	{
 		<tr>
+			<td nowrap="">
+				@Html.DisplayFor(modelItem => item.Pedido.ID)
+			</td>
 			<td nowrap="">
 				@Html.DisplayFor(modelItem => item.Pedido.PaisDestino)
 			</td>

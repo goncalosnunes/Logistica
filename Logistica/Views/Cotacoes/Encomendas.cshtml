@@ -11,6 +11,9 @@
 <table class="table">
 	<tr>
 		<th nowrap="">
+			@Html.DisplayName("Nº de Encomenda")
+		</th>
+		<th nowrap="">
 			@Html.DisplayName("Nome")
 		</th>
 		<th nowrap="">
@@ -57,6 +60,9 @@
 	@foreach (var item in Model)
 	{
 		<tr>
+			<td nowrap="">
+				@Html.DisplayFor(modelItem => item.ID)
+			</td>
 			<td nowrap="">
 				@Html.DisplayFor(modelItem => item.Nome)
 			</td>
@@ -128,7 +134,10 @@
 				@Html.DisplayFor(modelItem => item.Transportadora.NomeTransportadora)
 			</td>
 			<td>
-				@Html.ActionLink("Alterar Estado", "Encomenda", new { id = item.ID })
+				@if (item.Estado != 4)
+				{
+					@Html.ActionLink("Alterar Estado", "Encomenda", new { id = item.ID })
+				}
 			</td>
 		</tr>
 	}

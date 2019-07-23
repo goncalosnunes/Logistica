@@ -157,7 +157,35 @@
 			@Html.DisplayName("Estado")
 		</dt>
 		<dd nowrap="">
-			@Html.DisplayFor(model => model.Estado)
+			@if (Model.Estado == 0)
+			{
+				@Html.DisplayName("Por aceitar")
+			}
+
+			@if (Model.Estado == 1)
+			{
+				@Html.DisplayName("Aceite")
+			}
+
+			@if (Model.Estado == 2)
+			{
+				@Html.DisplayName("Em processamento pela transportadora")
+			}
+
+			@if (Model.Estado == 3)
+			{
+				@Html.DisplayName("Em transito")
+			}
+
+			@if (Model.Estado == 4)
+			{
+				@Html.DisplayName("Entregue")
+			}
+
+			@if (Model.Estado == 5)
+			{
+				@Html.DisplayName("Por favor contacte a transportadora")
+			}
 		</dd>
 	</dl>
 </div>
