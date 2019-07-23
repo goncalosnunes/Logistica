@@ -87,7 +87,7 @@ namespace Logistica.Models
         public virtual Transportadora Transportadora { get; set; }
         public  virtual int Transportadorafk { get; set; }
 
-        public decimal Preco { get; set; }
+        public string Preco { get; set; }
 
         public int Estado { get; set; }
 

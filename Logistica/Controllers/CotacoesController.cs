@@ -32,7 +32,7 @@ namespace Logistica.Controllers
                               .ID;
                 modelo.Transportadora = db.Transportadora.Find(idTransportadora);
                 modelo.Transportadorafk = db.Transportadora.Find(idTransportadora).ID;
-                modelo.valorCotacao = 0;
+                modelo.valorCotacao = "0";
                 modelo.Aceite = false;
                 var existe = false;
                 foreach (var iten in db.Cotacoes)
@@ -69,7 +69,7 @@ namespace Logistica.Controllers
                                 .OrderByDescending(a => a.ID)
                                 .ToList();
             listaDeCotacoes = listaDeCotacoes
-                                .Where(a => !(a.valorCotacao.Equals(0)))
+                                .Where(a => !(a.valorCotacao.Equals("0")))
                                 .OrderByDescending(a => a.ID)
                                 .ToList();
             return View(listaDeCotacoes);
@@ -152,7 +152,7 @@ namespace Logistica.Controllers
                                      .OrderByDescending(a => a.ID)
                                      .ToList();
             listaDeCotacoes = listaDeCotacoes
-                                .Where(a => a.valorCotacao.Equals(0))
+                                .Where(a => a.valorCotacao.Equals("0"))
                                 .OrderByDescending(a => a.ID)
                                 .ToList();
             return View(listaDeCotacoes);
@@ -187,7 +187,6 @@ namespace Logistica.Controllers
             db.Entry(pedidoAux).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Encomendas");
-            return View(pedido);
         }
 
     }

@@ -11,6 +11,7 @@
 </p>
 <table class="table">
 	<tr>
+
 		<th nowrap="">
 			@Html.DisplayName("Nº de Pedido")
 		</th>
@@ -46,41 +47,44 @@
 
 	@foreach (var item in Model)
 	{
-		<tr>
-			<td nowrap="">
-				@Html.DisplayFor(modelItem => item.Pedido.PaisDestino)
-			</td>
-			<td nowrap="">
-				@Html.DisplayFor(modelItem => item.Pedido.CidadeDestino)
-			</td>
-			<td nowrap="">
-				@Html.DisplayFor(modelItem => item.Pedido.CodigoPostalDestino)
-			</td>
-			<td nowrap="">
-				@Html.DisplayFor(modelItem => item.Pedido.Peso)
-			</td>
-			<td nowrap="">
-				@Html.DisplayFor(modelItem => item.Pedido.Altura)
-			</td>
-			<td nowrap="">
-				@Html.DisplayFor(modelItem => item.Pedido.Comprimento)
-			</td>
-			<td nowrap="">
-				@Html.DisplayFor(modelItem => item.Pedido.Largura)
-			</td>
-			<td nowrap="">
-				@Html.DisplayFor(modelItem => item.Pedido.DataEntregaPretendida)
-			</td>
-			<td nowrap="">
-				@Html.DisplayFor(modelItem => item.valorCotacao)
-			</td>
-			<td nowrap="">
-				@Html.ActionLink("Alterar cotação", "Edit", new { id = item.ID })
-			</td>
-			<td nowrap="">
-				@Html.ActionLink("Detalhes", "Details", new { id = item.ID })
-			</td>
-		</tr>
+    <tr>
+        <td nowrap="">
+            @Html.DisplayFor(modelItem => item.Pedido.ID)
+        </td>
+        <td nowrap="">
+            @Html.DisplayFor(modelItem => item.Pedido.PaisDestino)
+        </td>
+        <td nowrap="">
+            @Html.DisplayFor(modelItem => item.Pedido.CidadeDestino)
+        </td>
+        <td nowrap="">
+            @Html.DisplayFor(modelItem => item.Pedido.CodigoPostalDestino)
+        </td>
+        <td nowrap="">
+            @Html.DisplayFor(modelItem => item.Pedido.Peso)
+        </td>
+        <td nowrap="">
+            @Html.DisplayFor(modelItem => item.Pedido.Altura)
+        </td>
+        <td nowrap="">
+            @Html.DisplayFor(modelItem => item.Pedido.Comprimento)
+        </td>
+        <td nowrap="">
+            @Html.DisplayFor(modelItem => item.Pedido.Largura)
+        </td>
+        <td nowrap="">
+            @Html.DisplayFor(modelItem => item.Pedido.DataEntregaPretendida)
+        </td>
+        <td nowrap="">
+            @Html.DisplayFor(modelItem => item.valorCotacao)
+        </td>
+        <td nowrap="">
+            @Html.ActionLink("Alterar cotação", "Edit", new { id = item.ID })
+        </td>
+        <td nowrap="">
+            @Html.ActionLink("Detalhes", "Details", new { id = item.ID })
+        </td>
+    </tr>
 		
 		
 	}

@@ -44,7 +44,10 @@ namespace Logistica.Controllers
                                    .OrderByDescending(a => a.ID)
                                    .ToList();
             listaDePedidos = listaDePedidos
-                                .Where(a => a.Estado.Equals(1))
+                                .Where(a => !a.Estado.Equals(0))
+                                .ToList();
+            listaDePedidos = listaDePedidos
+                                .Where(a => !a.Estado.Equals(4))
                                 .ToList();
 
             // se for apenas agente
