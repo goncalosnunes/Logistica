@@ -83,6 +83,7 @@ namespace Logistica.Models
         [ForeignKey("Utilizadorfk")]
         public Utilizadores Utilizador { get; set; }
         public int Utilizadorfk { get; set; }
+
         public virtual Transportadora Transportadora { get; set; }
         public  virtual int Transportadorafk { get; set; }
 

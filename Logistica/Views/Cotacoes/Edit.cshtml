@@ -21,7 +21,7 @@
 	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 	@Html.HiddenFor(model => model.Transportadorafk)
 	<div class="form-group">
-		@Html.LabelFor(model => model.valorCotacao, htmlAttributes: new { @class = "control-label col-md-2" })
+		@Html.Label("Cotação", htmlAttributes: new { @class = "control-label col-md-2" })
 		<div class="col-md-10">
 			@Html.EditorFor(model => model.valorCotacao, new { htmlAttributes = new { @class = "form-control" } })
 			@Html.ValidationMessageFor(model => model.valorCotacao, "", new { @class = "text-danger" })
@@ -36,7 +36,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "EmEspera")
+    @Html.ActionLink("Voltar para a listagem", "EmEspera")
 </div>
 
 @section Scripts {

@@ -279,7 +279,6 @@
     <Content Include="Views\UserAdmin\Details.cshtml" />
     <Content Include="Views\UserAdmin\Edit.cshtml" />
     <Content Include="Views\UserAdmin\Index.cshtml" />
-    <Content Include="Views\Utilizadores\Create.cshtml" />
     <Content Include="Views\Utilizadores\Delete.cshtml" />
     <Content Include="Views\Utilizadores\Details.cshtml" />
     <Content Include="Views\Utilizadores\Edit.cshtml" />
@@ -290,8 +289,7 @@
     <Content Include="Views\Pedidos\Edit.cshtml" />
     <Content Include="Views\Pedidos\Index.cshtml" />
     <Content Include="Views\Transportadoras\Delete.cshtml" />
-    <Content Include="Views\Transportadoras\Details.cshtml" />
-    <Content Include="Views\Transportadoras\Edit.cshtml" />
+    <Content Include="Views\Transportadoras\Create.cshtml" />
     <Content Include="Views\Transportadoras\Index.cshtml" />
     <Content Include="Views\Cotacoes\Details.cshtml" />
     <Content Include="Views\Cotacoes\Edit.cshtml" />

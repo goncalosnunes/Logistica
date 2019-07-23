@@ -11,6 +11,9 @@
 <table class="table">
 	<tr>
 		<th nowrap="">
+			@Html.DisplayName("Nº de Pedido")
+		</th>
+		<th nowrap="">
 			@Html.DisplayName("Nome")
 		</th>
 		<th nowrap="">
@@ -51,6 +54,10 @@
 	@foreach (var item in Model)
 	{
 <tr>
+
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.ID)
+	</td>
 	<td nowrap="">
 		@Html.DisplayFor(modelItem => item.Nome)
 	</td>
@@ -115,14 +122,14 @@
 			@Html.DisplayName("Por favor contacte a transportadora")
 		}
 	</td>
-	<td>
-		@Html.ActionLink("Edit", "Edit", new { id = item.ID })
+	<td nowrap="">
+		@Html.ActionLink("Ver cotações", "Edit", new { id = item.ID })
 	</td>
-	<td>
-		@Html.ActionLink("Details", "Details", new { id = item.ID })
+	<td nowrap="">
+		@Html.ActionLink("Detalhes", "Details", new { id = item.ID })
 	</td>
-	<td>
-		@Html.ActionLink("Delete", "Delete", new { id = item.ID })
+	<td nowrap="">
+		@Html.ActionLink("Cancelar pedido", "Delete", new { id = item.ID })
 	</td>
 </tr>
 	}

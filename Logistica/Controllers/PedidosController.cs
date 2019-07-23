@@ -116,7 +116,6 @@ namespace Logistica.Controllers
                                     .First();
             pedido.Utilizadorfk = pedido.Utilizador.ID;
             pedido.Aceite = 0;
-
             pedido.Estado = 0;
             if (ModelState.IsValid)
             {
