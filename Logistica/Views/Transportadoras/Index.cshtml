@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+	<h2>@Html.DisplayName("Transportadoras")  | @Html.ActionLink("Clientes", "../Utilizadores/Index")</h2>
 
 <p>
     @Html.ActionLink("Adicionar transportadora", "Create")
@@ -71,7 +71,7 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.ActionLink("Apagar transportador", "Delete", new { id=item.ID })
+            @Html.ActionLink("Remover transportadora", "Delete", new { id=item.ID })
         </td>
     </tr>
 }

@@ -80,13 +80,11 @@ namespace Logistica.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required(ErrorMessage = "O nome é de preenchimento obrigatório")]
         [StringLength(30)]
         [RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
             " separadas por um espaço em branco")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "O apelido é de preenchimento obrigatório")]
         [StringLength(30)]
         [RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
             " separadas por um espaço em branco")]
@@ -127,6 +125,8 @@ namespace Logistica.Models
 
         [RegularExpression("[0-9]{9,9}", ErrorMessage = "Insira um número de 9 dígitos")]
         public string Contacto { get; set; }
+
+        public string NomeTransportadora { get; set; }
     }
 
     public class ResetPasswordViewModel

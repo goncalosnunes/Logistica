@@ -1,4 +1,5 @@
 ﻿using Logistica.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Data;
 using System.Data.Entity;
@@ -143,31 +144,72 @@ namespace Logistica.Controllers
             }
             return View(utilizadores);
         }
-
-        // GET: Utilizadores/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        //
+        // GET: /Users/Delete/5
+        [HttpGet]
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Utilizadores utilizadores = await db.Utilizadores.FindAsync(id);
-            if (utilizadores == null)
+            var utilizador = db.Utilizadores
+                                        .Where(a => a.ID == id)
+                                        .OrderByDescending(a => a.ID)
+                                        .First();
+            var user = UserManager.FindByName(utilizador.Email);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(utilizadores);
+            return View(utilizador);
         }
 
-        // POST: Utilizadores/Delete/5
-        [HttpPost, ActionName("Delete")]
+        //
+        // POST: /Users/Delete/5
+        [HttpPost]
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int? id)
         {
-            Utilizadores utilizadores = await db.Utilizadores.FindAsync(id);
-            db.Utilizadores.Remove(utilizadores);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                var utilizador = db.Utilizadores
+                                     .Where(a => a.ID == id)
+                                     .OrderByDescending(a => a.ID)
+                                     .First();
+                var user = UserManager.FindByName(utilizador.Email);
+
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+                var result = await UserManager.DeleteAsync(user);
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError("", result.Errors.First());
+                    return View();
+                }
+                var pedidos = db.Pedidos
+                    .Where(a => a.Utilizadorfk == id)
+                    .OrderByDescending(a => a.ID)
+                    .ToList();
+                foreach (var item in pedidos)
+                {
+                    db.Pedidos.Remove(item);
+                    db.SaveChanges();
+                }
+                db.Utilizadores.Remove(utilizador);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            return View();
         }
 
         protected override void Dispose(bool disposing)

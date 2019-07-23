@@ -4,96 +4,91 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+	<h2>@Html.ActionLink("Transportadoras", "../Transportadoras/Index")  | @Html.DisplayName("Clientes")</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
+        <th nowrap ="">
+            @Html.DisplayName("Nome")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Apelido)
+        <th nowrap ="">
+            @Html.DisplayName("Apelido")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fotografia)
+        <th nowrap ="">
+            @Html.DisplayName("Empresa")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NomeEmpresa)
+        <th nowrap ="">
+            @Html.DisplayName("Pais")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pais)
+        <th nowrap ="">
+            @Html.DisplayName("Cidade")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cidade)
+        <th nowrap ="">
+            @Html.DisplayName("Rua")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rua)
+        <th nowrap ="">
+            @Html.DisplayName("CodigoPostal")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CodigoPostal)
+        <th nowrap ="">
+            @Html.DisplayName("Nº da Porta")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumPorta)
+        <th nowrap ="">
+            @Html.DisplayName("NIF")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NIF)
+        <th nowrap ="">
+            @Html.DisplayName("Contacto")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contacto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
+        <th nowrap ="">
+            @Html.DisplayName("Email")
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Apelido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fotografia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeEmpresa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pais)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rua)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CodigoPostal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumPorta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NIF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contacto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+<tr>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Nome)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Apelido)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.NomeEmpresa)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Pais)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Cidade)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Rua)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.CodigoPostal)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.NumPorta)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.NIF)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Contacto)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Email)
+	</td>
+	<td nowrap="">
+		@Html.ActionLink("Editar", "Edit", new { id = item.ID })
+	</td>
+	<td nowrap="">
+		@Html.ActionLink("Detalhes", "Details", new { id = item.ID })
+	</td>
+	<td nowrap="">
+		@Html.ActionLink("Remover cliente", "Delete", new { id = item.ID })
+	</td>
+</tr>
 }
 
 </table>

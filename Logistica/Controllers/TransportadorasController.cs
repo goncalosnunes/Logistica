@@ -1,14 +1,53 @@
 ﻿using Logistica.Models;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+
+using System.Threading.Tasks;
+
 
 namespace Logistica.Controllers
 {
     public class TransportadorasController : Controller
     {
+        public TransportadorasController()
+        {
+        }
+
+        public TransportadorasController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
+
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+        private ApplicationSignInManager _signInManager;
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set { _signInManager = value; }
+        }
         private LogisticaDB db = new LogisticaDB();
         // GET: Transportadoras
         [Authorize(Roles = "Gestor,Transportador")]
@@ -34,57 +73,120 @@ namespace Logistica.Controllers
             return View(listaDeTransportadores);
         }
 
-        // GET: Transportadoras/Create
+        //
+        // GET: /Account/Register
+        [HttpGet]
+        [AllowAnonymous]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Transportadoras/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Gestor")]
+        //
+        // POST: /Account/Register
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,NomeTransportadora,Pais,Cidade,Rua,CodigoPostal,NumPorta,NIF,Contacto,Email")] Transportadora transportadora)
+        public async Task<ActionResult> Create(RegisterViewModel model)
         {
+            using (var context = new ApplicationDbContext())
+                if (ModelState.IsValid)
+                {
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
 
-            if (ModelState.IsValid)
-            {
-                db.Transportadora.Add(transportadora);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                        // colocar aqui as instrucoes para guardar um Agente
+                        var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                        ViewBag.Link = callbackUrl;
+                        var roleStore = new RoleStore<IdentityRole>(context);
+                        var roleManager = new RoleManager<IdentityRole>(roleStore);
 
-            return View(transportadora);
+                        var userStore = new UserStore<ApplicationUser>(context);
+                        var userManager = new UserManager<ApplicationUser>(userStore);
+                        userManager.AddToRole(user.Id, "Transportador");
+                        var transportadora = new Transportadora { NomeTransportadora = model.NomeEmpresa, Pais = model.Pais, Cidade = model.Cidade, Rua = model.Rua, CodigoPostal = model.CodigoPostal, NumPorta = model.NumPorta, NIF = model.NIF, Contacto = model.Contacto, Email = model.Email};
+                        LogisticaDB db = new LogisticaDB();
+                        db.Transportadora.Add(transportadora);
+                        await db.SaveChangesAsync();
+                        return RedirectToAction("Index");
+                    }
+                    return View(model);
+                }
+
+            // If we got this far, something failed, redisplay form
+            return View();
         }
 
-
-        // GET: Transportadoras/Delete/5
+        //
+        // GET: /Users/Delete/5
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Transportadora transportadora = db.Transportadora.Find(id);
-            if (transportadora == null)
+            var transportadora = db.Transportadora
+                                        .Where(a => a.ID == id)
+                                        .OrderByDescending(a => a.ID)
+                                        .First();
+            var user = UserManager.FindByName(transportadora.Email);
+            if (user == null)
             {
                 return HttpNotFound();
             }
             return View(transportadora);
         }
 
-        // POST: Transportadoras/Delete/5
-        [HttpPost, ActionName("Delete")]
+        //
+        // POST: /Users/Delete/5
+        [HttpPost]
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int? id)
         {
-            Transportadora transportadora = db.Transportadora.Find(id);
-            
-            db.Transportadora.Remove(transportadora);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                var transportadora = db.Transportadora
+                                     .Where(a => a.ID == id)
+                                     .OrderByDescending(a => a.ID)
+                                     .First();
+                var user = UserManager.FindByName(transportadora.Email);
+
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+                var result = await UserManager.DeleteAsync(user);
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError("", result.Errors.First());
+                    return View();
+                }
+                var cotacoes = db.Cotacoes
+                    .Where(a => a.Transportadorafk == id)
+                    .OrderByDescending(a => a.ID)
+                    .ToList();
+                foreach (var item in cotacoes)
+                {
+                    db.Cotacoes.Remove(item);
+                    db.SaveChanges();
+                }
+                db.Transportadora.Remove(transportadora);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            return View();
         }
 
         protected override void Dispose(bool disposing)
