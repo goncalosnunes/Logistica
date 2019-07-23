@@ -269,16 +269,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\RolesAdmin\Create.cshtml" />
-    <Content Include="Views\RolesAdmin\Delete.cshtml" />
-    <Content Include="Views\RolesAdmin\Details.cshtml" />
-    <Content Include="Views\RolesAdmin\Edit.cshtml" />
-    <Content Include="Views\RolesAdmin\Index.cshtml" />
-    <Content Include="Views\UserAdmin\Create.cshtml" />
-    <Content Include="Views\UserAdmin\Delete.cshtml" />
-    <Content Include="Views\UserAdmin\Details.cshtml" />
-    <Content Include="Views\UserAdmin\Edit.cshtml" />
-    <Content Include="Views\UserAdmin\Index.cshtml" />
     <Content Include="Views\Utilizadores\Delete.cshtml" />
     <Content Include="Views\Utilizadores\Details.cshtml" />
     <Content Include="Views\Utilizadores\Edit.cshtml" />
