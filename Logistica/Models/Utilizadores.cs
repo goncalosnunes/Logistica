@@ -18,38 +18,38 @@ namespace Logistica.Models
 
         [Required(ErrorMessage = "O nome é de preenchimento obrigatório")]
         [StringLength(30)]
-        [RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
-            " separadas por um espaço em branco")]
+        //[RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
+        //    " separadas por um espaço em branco")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "O apelido é de preenchimento obrigatório")]
         [StringLength(30)]
-        [RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
-            " separadas por um espaço em branco")]
+        //[RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
+        //    " separadas por um espaço em branco")]
         public string Apelido { get; set; }
 
         public string Fotografia { get; set; }
 
-        [RegularExpression("[A-ZÁÉÍÓÚ][a-záéíóúàèìòù]+( [A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,6}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
-           " separadas por um espaço em branco")]
+        //[RegularExpression("[A-ZÁÉÍÓÚ][a-záéíóúàèìòù]+( [A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,6}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
+        //   " separadas por um espaço em branco")]
         [StringLength(50)]
         public string NomeEmpresa { get; set; }
 
         [Required(ErrorMessage = "Adicione um país")]
-        [RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
-           " separadas por um espaço em branco")]
+        //[RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
+        //   " separadas por um espaço em branco")]
         [StringLength(50)]
         public string Pais { get; set; }
 
 
-        [RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
-           " separadas por um espaço em branco")]
+        //[RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
+        //   " separadas por um espaço em branco")]
         [StringLength(50)]
         public string Cidade { get; set; }
 
 
-        [RegularExpression("[A-ZÁÉÍÓÚ][a-záéíóúàèìòù]+( [A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,6}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
-           " separadas por um espaço em branco")]
+        //[RegularExpression("[A-ZÁÉÍÓÚ][a-záéíóúàèìòù]+( [A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,6}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
+        //   " separadas por um espaço em branco")]
         [StringLength(50)]
         public string Rua { get; set; }
 
