@@ -1,0 +1,121 @@
+﻿@model Logistica.Models.Cotacoes
+
+
+@{
+	ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+<div>
+	<h4>Detalhes</h4>
+	<dl class="dl-horizontal">
+		<dt nowrap="">
+			@Html.DisplayName("Nome")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Pedido.Nome)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Apelido")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Pedido.Apelido)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("País")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Pedido.PaisDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("CidadeDestino")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Pedido.CidadeDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Rua")
+		</dt>
+
+		<dd nowrap=""> 
+			@Html.DisplayFor(model => model.Pedido.RuaDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Nº da Porta")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Pedido.NumPortaDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Código Postal")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Pedido.CodigoPostalDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Peso")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Pedido.Peso)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Altura")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Pedido.Altura)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Comprimento")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Pedido.Comprimento)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Largura")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Pedido.Largura)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Data de Entrega")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Pedido.DataEntregaPretendida)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Cotação")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.valorCotacao)
+		</dd>
+	</dl>
+</div>
+
+	<p>
+		@Html.ActionLink("Voltar para listagem", "EmEspera")
+	</p>
+

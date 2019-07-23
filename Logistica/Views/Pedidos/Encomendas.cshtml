@@ -1,0 +1,194 @@
+﻿@model Logistica.Models.Pedidos
+
+@{
+	ViewBag.Title = "Encomendas";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+	<h4>Encomenda</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt nowrap="">
+			@Html.DisplayName("Nº de Encomenda")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.ID)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Nome")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Nome)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Apelido")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Apelido)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Empresa")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.NomeEmpresaDestinataria)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("País")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.PaisDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Cidade")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.CidadeDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Rua")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.RuaDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Código Postal")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.CodigoPostalDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Número da Porta")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.NumPortaDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Contacto")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.ContactoDestinatario)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Email")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.EmailDestinatario)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Peso")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Peso)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Comprimento")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Comprimento)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Largura")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Largura)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Altura")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Altura)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Data de Entrega")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.DataEntregaPretendida)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Transportadora")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Transportadora.NomeTransportadora)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Preço")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Preco)
+		</dd>
+		<dt nowrap="">
+			@Html.DisplayName("Estado")
+		</dt>
+		<dd nowrap="">
+			@if (Model.Estado == 0)
+			{
+				@Html.DisplayName("Por aceitar")
+			}
+
+			@if (Model.Estado == 1)
+			{
+				@Html.DisplayName("Aceite")
+			}
+
+			@if (Model.Estado == 2)
+			{
+				@Html.DisplayName("Em processamento pela transportadora")
+			}
+
+			@if (Model.Estado == 3)
+			{
+				@Html.DisplayName("Em transito")
+			}
+
+			@if (Model.Estado == 4)
+			{
+				@Html.DisplayName("Entregue")
+			}
+
+			@if (Model.Estado == 5)
+			{
+				@Html.DisplayName("Por favor contacte a transportadora")
+			}
+		</dd>
+	</dl>
+</div>
+<p>
+	@Html.ActionLink("Voltar para a listagem", "EmTransito")
+</p>

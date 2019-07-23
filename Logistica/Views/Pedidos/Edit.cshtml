@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Logistica.Models.Cotacoes>
+
+@{
+	ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+@Html.AntiForgeryToken()
+
+<table class="table">
+	<tr>
+		<th nowrap="">
+			@Html.DisplayName("Transportadora")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Email")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Contacto")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Preço")
+		</th>
+		@*<th>
+			@Html.DisplayNameFor(model => model.Aceite)
+		</th>
+		<th>
+			@Html.DisplayName("Submeter")
+		</th>*@
+		<th></th>
+	</tr>
+
+@foreach (var item in Model)
+{
+
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	@Html.HiddenFor(modelItem => item.ID)
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	@Html.HiddenFor(modelItem => item.Pedidofk)
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	@Html.HiddenFor(modelItem => item.Transportadorafk)
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	@Html.HiddenFor(modelItem => item.Pedido)
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	@Html.HiddenFor(modelItem => item.Transportadora)
+<tr>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Transportadora.NomeTransportadora)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Transportadora.Email)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Transportadora.Contacto)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.valorCotacao)
+	</td>
+	<td nowrap="">
+		@Html.ActionLink("Aceitar", "Aceitar", new { id = item.ID })
+	</td>
+</tr>
+}
+</table>
+}
+<div>
+	@Html.ActionLink("Voltar para a listagem", "PorAceitar")
+</div>
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}

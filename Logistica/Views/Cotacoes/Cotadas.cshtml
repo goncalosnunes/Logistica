@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Logistica.Models.Cotacoes>
+
+
+@{
+	ViewBag.Title = "Cotadas";
+}
+
+<h2>Cotadas</h2>
+<p>
+	@Html.ActionLink("Encomendas", "Encomendas") | @Html.ActionLink("Por atribuir cotação", "EmEspera") | @Html.ActionLink("Cotadas", "Cotadas")
+</p>
+<table class="table">
+	<tr>
+		<th nowrap="">
+			@Html.DisplayName("Nº de Pedido")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("País")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Cidade")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Código Postal")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Peso")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Altura")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Comprimento")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Largura")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Data de Entrega Pretendida")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Cotação")
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td nowrap="">
+				@Html.DisplayFor(modelItem => item.Pedido.PaisDestino)
+			</td>
+			<td nowrap="">
+				@Html.DisplayFor(modelItem => item.Pedido.CidadeDestino)
+			</td>
+			<td nowrap="">
+				@Html.DisplayFor(modelItem => item.Pedido.CodigoPostalDestino)
+			</td>
+			<td nowrap="">
+				@Html.DisplayFor(modelItem => item.Pedido.Peso)
+			</td>
+			<td nowrap="">
+				@Html.DisplayFor(modelItem => item.Pedido.Altura)
+			</td>
+			<td nowrap="">
+				@Html.DisplayFor(modelItem => item.Pedido.Comprimento)
+			</td>
+			<td nowrap="">
+				@Html.DisplayFor(modelItem => item.Pedido.Largura)
+			</td>
+			<td nowrap="">
+				@Html.DisplayFor(modelItem => item.Pedido.DataEntregaPretendida)
+			</td>
+			<td nowrap="">
+				@Html.DisplayFor(modelItem => item.valorCotacao)
+			</td>
+			<td nowrap="">
+				@Html.ActionLink("Alterar cotação", "Edit", new { id = item.ID })
+			</td>
+			<td nowrap="">
+				@Html.ActionLink("Detalhes", "Details", new { id = item.ID })
+			</td>
+		</tr>
+		
+		
+	}
+</table>
+<p>
+	@Html.ActionLink("Voltar para a listagem", "EmEspera")
+</p>

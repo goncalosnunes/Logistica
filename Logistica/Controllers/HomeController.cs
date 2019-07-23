@@ -7,7 +7,11 @@ namespace Logistica.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            if (User.IsInRole("Transportador")) return RedirectToAction("Encomendas", "Cotacoes");
+            if (User.IsInRole("Gestor")) return RedirectToAction("Index", "Transportadoras");
+            if (User.IsInRole("Cliente")) return RedirectToAction("Index", "Pedidos");
             return View();
+
         }
 
         [HttpGet]

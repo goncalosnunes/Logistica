@@ -1,0 +1,137 @@
+﻿@model IEnumerable<Logistica.Models.Pedidos>
+
+@{
+	ViewBag.Title = "PorAceitar";
+}
+
+<h2>PorAceitar</h2>
+<p>
+	@Html.ActionLink("Nova Encomenda", "Create") | @Html.ActionLink("Por Aceitar", "PorAceitar") | @Html.ActionLink("Em Transito", "EmTransito") | @Html.ActionLink("Encomendas Finalizadas", "Index")
+</p>
+<table class="table">
+	<tr>
+		<th nowrap="">
+			@Html.DisplayName("Nº de Pedido")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Nome")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Apelido")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("País")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Cidade")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Rua")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Nº da Porta")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Peso")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Comprimento")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Largura")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Altura")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Data de Entrega")
+		</th>
+		<th nowrap="">
+			@Html.DisplayName("Estado")
+		</th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+<tr>
+
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.ID)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Nome)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Apelido)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.PaisDestino)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.CidadeDestino)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.RuaDestino)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.NumPortaDestino)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Peso)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Comprimento)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Largura)
+	</td>
+	<td nowrap="">
+		@Html.DisplayFor(modelItem => item.Altura)
+	</td>
+	<td nowrap="">
+		@Html.DisplayName(item.DataEntregaPretendida.Day + "/" + item.DataEntregaPretendida.Month + "/" + item.DataEntregaPretendida.Year)
+	</td>
+	<td nowrap="">
+		@if (item.Estado == 0)
+		{
+			@Html.DisplayName("Por aceitar")
+		}
+
+		@if (item.Estado == 1)
+		{
+			@Html.DisplayName("Aceite")
+		}
+
+		@if (item.Estado == 2)
+		{
+			@Html.DisplayName("Em processamento pela transportadora")
+		}
+
+		@if (item.Estado == 3)
+		{
+			@Html.DisplayName("Em transito")
+		}
+
+		@if (item.Estado == 4)
+		{
+			@Html.DisplayName("Entregue")
+		}
+
+		@if (item.Estado == 5)
+		{
+			@Html.DisplayName("Por favor contacte a transportadora")
+		}
+	</td>
+	<td nowrap="">
+		@Html.ActionLink("Ver cotações", "Edit", new { id = item.ID })
+	</td>
+	<td nowrap="">
+		@Html.ActionLink("Detalhes", "Details", new { id = item.ID })
+	</td>
+	<td nowrap="">
+		@Html.ActionLink("Cancelar pedido", "Delete", new { id = item.ID })
+	</td>
+</tr>
+	}
+</table>
+

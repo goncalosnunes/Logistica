@@ -1,0 +1,145 @@
+﻿@model Logistica.Models.Pedidos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pedido</h4>
+    <hr />
+	<dl class="dl-horizontal">
+		<dt nowrap="">
+			@Html.DisplayName("Nº de Pedido")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.ID)
+		</dd>
+		<dt nowrap="">
+			@Html.DisplayName("Nome")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Nome)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Apelido")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Apelido)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Empresa")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.NomeEmpresaDestinataria)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("País")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.PaisDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Cidade")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.CidadeDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Rua")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.RuaDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Código Postal")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.CodigoPostalDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Nº da Porta")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.NumPortaDestino)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Contacto")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.ContactoDestinatario)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Email")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.EmailDestinatario)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Peso")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Peso)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Comprimento")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Comprimento)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Largura")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Largura)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Altura")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.Altura)
+		</dd>
+
+		<dt nowrap="">
+			@Html.DisplayName("Data de Entrega")
+		</dt>
+
+		<dd nowrap="">
+			@Html.DisplayFor(model => model.DataEntregaPretendida)
+		</dd>
+
+	</dl>
+</div>
+<p>
+    @Html.ActionLink("Cancelar pedido", "Delete", new { id = Model.ID }) |
+    @Html.ActionLink("Voltar para a listagem", "PorAceitar")
+</p>

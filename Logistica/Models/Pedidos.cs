@@ -1,24 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Logistica.Models
 {
-    public class Pedido
+    public class Pedidos
     {
+        public Pedidos()
+        {
+            // criar o objeto 'ListaDeMultas'
+            ListaDeCotacoes = new HashSet<Cotacoes>();
+        }
+
         public int ID { get; set; }
 
         [Required(ErrorMessage = "O nome é de preenchimento obrigatório")]
         [StringLength(30)]
-        [RegularExpression("[A-ZÁÉÍÓÚ][a-záéíóúàèìòù]", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
+        [RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
             " separadas por um espaço em branco")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "O apelido é de preenchimento obrigatório")]
         [StringLength(30)]
-        [RegularExpression("[A-ZÁÉÍÓÚ][a-záéíóúàèìòù]", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
+        [RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
             " separadas por um espaço em branco")]
         public string Apelido { get; set; }
 
@@ -28,13 +33,13 @@ namespace Logistica.Models
         public string NomeEmpresaDestinataria { get; set; }
 
         [Required(ErrorMessage = "Adicione um país")]
-        [RegularExpression("[A-ZÁÉÍÓÚ][a-záéíóúàèìòù]+( [A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,6}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
+        [RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
            " separadas por um espaço em branco")]
         [StringLength(50)]
         public string PaisDestino { get; set; }
 
         [Required(ErrorMessage = "Adicione uma cidade")]
-        [RegularExpression("[A-ZÁÉÍÓÚ][a-záéíóúàèìòù]+( [A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,6}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
+        [RegularExpression("([A-ZÁÉÍÓÚ][a-záéíóúàèìòù]*){1,2}", ErrorMessage = "só são aceites palavras, começadas por maiúsculas," +
            " separadas por um espaço em branco")]
         [StringLength(50)]
         public string CidadeDestino { get; set; }
@@ -75,5 +80,19 @@ namespace Logistica.Models
         [Required(ErrorMessage = "Adicione uma data de entrega pretendida")]
         public DateTime DataEntregaPretendida { get; set; }
 
+        [ForeignKey("Utilizadorfk")]
+        public Utilizadores Utilizador { get; set; }
+        public int Utilizadorfk { get; set; }
+
+        public virtual Transportadora Transportadora { get; set; }
+        public  virtual int Transportadorafk { get; set; }
+
+        public decimal Preco { get; set; }
+
+        public int Estado { get; set; }
+
+        public int Aceite { get; set; }
+
+        public virtual ICollection<Cotacoes> ListaDeCotacoes { get; set; }
     }
 }

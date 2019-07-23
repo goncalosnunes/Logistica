@@ -1,11 +1,13 @@
 ﻿using Logistica.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace Logistica.Controllers
 {
@@ -147,26 +149,36 @@ namespace Logistica.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+            using (var context = new ApplicationDbContext())
+                if (ModelState.IsValid)
                 {
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
 
-                    // colocar aqui as instrucoes para guardar um Agente
+                        // colocar aqui as instrucoes para guardar um Agente
+                        var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                        ViewBag.Link = callbackUrl;
+                        var roleStore = new RoleStore<IdentityRole>(context);
+                        var roleManager = new RoleManager<IdentityRole>(roleStore);
 
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail");
+                        var userStore = new UserStore<ApplicationUser>(context);
+                        var userManager = new UserManager<ApplicationUser>(userStore);
+                        userManager.AddToRole(user.Id, "Cliente");
+                        var utilizador = new Utilizadores { Nome = model.Nome, Apelido = model.Apelido, Pais = model.Pais, Email = model.Email, NIF = model.NIF, Contacto = model.Contacto, CodigoPostal = model.CodigoPostal, NumPorta = model.NumPorta, Cidade = model.Cidade, NomeEmpresa = model.NomeEmpresa, Rua = model.Rua };
+                        LogisticaDB db = new LogisticaDB();
+                        db.Utilizadores.Add(utilizador);
+                        await db.SaveChangesAsync();
+                        return RedirectToAction("login");
+                    }
+                    AddErrors(result);
                 }
-                AddErrors(result);
-            }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return View();
         }
 
         //
