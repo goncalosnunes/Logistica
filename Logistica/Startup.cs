@@ -17,7 +17,7 @@ namespace Logistica
             ConfigureAuth(app);
 
             // executar o método para configurar a aplicação
-            iniciaAplicacao();
+            IniciaAplicacao();
         }
 
 
@@ -25,7 +25,7 @@ namespace Logistica
         /// cria, caso não existam, as Roles de suporte à aplicação: Agente, Funcionario, Condutor
         /// cria, nesse caso, também, um utilizador...
         /// </summary>
-        private void iniciaAplicacao()
+        private void IniciaAplicacao()
         {
 
             // identifica a base de dados de serviço à aplicação
@@ -82,7 +82,7 @@ namespace Logistica
             }
 
             string[] emails;
-            emails = new string[5] { "andreSilveira@mail.com", "antonioRocha@mail.com", "augustoCarvalho@mail.com", "beatrizPinto@mail.com", "claudiaPinto@mail.com" };
+            emails = new string[5] { "andreSilveira@mail.com", "antonioRocha@mail.com", "augustoCarvalho@mail.com", "beatrizAlmeida@mail.com", "claudiaOliveira@mail.com" };
             for (int i = 0; i < emails.Length; i++)
             {
                 // criar um utilizador 'Cliente'
@@ -101,7 +101,7 @@ namespace Logistica
             }
 
             string[] transportadores;
-            transportadores = new string[5] { "transportadoraA@mail.com", "transportadoraB@mail.com", "transportadoraC@mail.com", "transportadoraD@mail.com", "transportadoraE@mail.com" };
+            transportadores = new string[5] { "transportesPrates@mail.com", "transportesMario@mail.com", "transportesContente@mail.com", "dhl@mail.com", "chronopost@mail.com" };
             for (int i = 0; i < transportadores.Length; i++)
             {
                 // criar um utilizador 'Transportador'
