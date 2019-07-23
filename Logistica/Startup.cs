@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Logistica.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Owin;
-using Logistica.Models;
 
 namespace Logistica
 {
@@ -17,7 +17,7 @@ namespace Logistica
             ConfigureAuth(app);
 
             // executar o método para configurar a aplicação
-            iniciaAplicacao();
+            IniciaAplicacao();
         }
 
 
@@ -25,12 +25,12 @@ namespace Logistica
         /// cria, caso não existam, as Roles de suporte à aplicação: Agente, Funcionario, Condutor
         /// cria, nesse caso, também, um utilizador...
         /// </summary>
-        private void iniciaAplicacao()
+        private void IniciaAplicacao()
         {
 
             // identifica a base de dados de serviço à aplicação
             ApplicationDbContext db = new ApplicationDbContext();
-
+            LogisticaDB dbLog = new LogisticaDB();
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
 
@@ -81,34 +81,42 @@ namespace Logistica
                 var result1 = userManager.AddToRole(user.Id, "Gestor");
             }
 
-            // criar um utilizador 'Cliente'
-            user = new ApplicationUser();
-
-            user.UserName = "cliente@mail.pt";
-            user.Email = "cliente@mail.pt";
-            //  user.Nome = "Luís Freitas";
-            userPWD = "password";
-            chkUser = userManager.Create(user, userPWD);
-
-            //Adicionar o Utilizador à respetiva Role-Agente
-            if (chkUser.Succeeded)
+            string[] emails;
+            emails = new string[5] { "andreSilveira@mail.com", "antonioRocha@mail.com", "augustoCarvalho@mail.com", "beatrizAlmeida@mail.com", "claudiaOliveira@mail.com" };
+            for (int i = 0; i < emails.Length; i++)
             {
-                var result1 = userManager.AddToRole(user.Id, "Cliente");
+                // criar um utilizador 'Cliente'
+                user = new ApplicationUser();
+                user.UserName = emails[i];
+                user.Email = emails[i];
+                //  user.Nome = "Luís Freitas";
+                userPWD = "password";
+                chkUser = userManager.Create(user, userPWD);
+
+                //Adicionar o Utilizador à respetiva Role-Agente
+                if (chkUser.Succeeded)
+                {
+                    var result1 = userManager.AddToRole(user.Id, "Cliente");
+                }
             }
 
-            // criar um utilizador 'Transportador'
-            user = new ApplicationUser();
-
-            user.UserName = "transportador@mail.pt";
-            user.Email = "transportador@mail.pt";
-            //  user.Nome = "Luís Freitas";
-            userPWD = "password";
-            chkUser = userManager.Create(user, userPWD);
-
-            //Adicionar o Utilizador à respetiva Role-Agente
-            if (chkUser.Succeeded)
+            string[] transportadores;
+            transportadores = new string[5] { "transportesPrates@mail.com", "transportesMario@mail.com", "transportesContente@mail.com", "dhl@mail.com", "chronopost@mail.com" };
+            for (int i = 0; i < transportadores.Length; i++)
             {
-                var result1 = userManager.AddToRole(user.Id, "Transportador");
+                // criar um utilizador 'Transportador'
+                user = new ApplicationUser();
+                user.UserName = transportadores[i];
+                user.Email = transportadores[i];
+                //  user.Nome = "Luís Freitas";
+                userPWD = "password";
+                chkUser = userManager.Create(user, userPWD);
+
+                //Adicionar o Utilizador à respetiva Role-Agente
+                if (chkUser.Succeeded)
+                {
+                    var result1 = userManager.AddToRole(user.Id, "Transportador");
+                }
             }
 
         }
